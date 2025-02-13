@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/umami-software/umami
   pullPolicy: IfNotPresent
-  tag: mysql-latest
+  tag: ""
 
 nameOverride: umami
 fullnameOverride: umami
