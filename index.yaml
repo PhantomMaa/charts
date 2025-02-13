@@ -55,6 +55,26 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/keycloak-1.0.0/keycloak-1.0.0.tgz
     version: 1.0.0
+  my-traefik:
+  - apiVersion: v2
+    appVersion: 1.0.3
+    created: "2025-02-13T07:57:46.173919811Z"
+    dependencies:
+    - alias: certmanager
+      condition: config.https.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.17.0
+    - name: traefik
+      repository: https://traefik.github.io/charts
+      version: 34.3.0
+    description: A Helm chart for Kubernetes
+    digest: 22e34b830cbbbe3d633f3fc7be5fe068b8890989de6b15266820d51bdd640cd9
+    name: my-traefik
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/my-traefik-1.0.3/my-traefik-1.0.3.tgz
+    version: 1.0.3
   umami:
   - apiVersion: v2
     appVersion: mysql-v2.15.1
@@ -86,4 +106,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-13T07:49:41.87737515Z"
+generated: "2025-02-13T07:57:46.173932465Z"
