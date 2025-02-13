@@ -31,7 +31,3 @@ spec:
               value: {{ .Values.nextauthSecret }}
             - name: DATABASE_URL
               value: {{ .Values.databaseUrl }}
-            - name: NEXTAUTH_URL
-              value: http://127.0.0.1:1111
-            - name: NEXT_PUBLIC_BASE_URL
-              value: http://127.0.0.1:1111
