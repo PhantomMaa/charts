@@ -11,4 +11,15 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/blinko-1.0.0/blinko-1.0.0.tgz
     version: 1.0.0
-generated: "2025-02-13T07:11:15.131483231Z"
+  umami:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-13T07:12:46.052500683Z"
+    description: A Helm chart for Kubernetes
+    digest: ecad04042597772b2cf9058421aeb6358b1b8b8f6191395ba626d290ab3c1dff
+    name: umami
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-13T07:12:46.052506353Z"
