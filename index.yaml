@@ -14,6 +14,16 @@ entries:
   umami:
   - apiVersion: v2
     appVersion: mysql-v2.15.1
+    created: "2025-02-13T07:30:24.496798994Z"
+    description: A Helm chart for Kubernetes
+    digest: df9407069b5d629be266e13bc4a805e194593f4c981f7a6c1837fbde4308d119
+    name: umami
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/umami-1.0.1/umami-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: mysql-v2.15.1
     created: "2025-02-13T07:18:58.345804703Z"
     description: A Helm chart for Kubernetes
     digest: fde41c6a6af5e7d819c0a84d4c0e82f5abc06a4a9a1e1e2f53bf52661dd61a31
@@ -32,4 +42,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-13T07:18:58.34585862Z"
+generated: "2025-02-13T07:30:24.496810806Z"
