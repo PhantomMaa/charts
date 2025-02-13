@@ -1,0 +1,53 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-prometheus
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`prometheus.{{ .Values.ingressHostname }}`)
+      kind: Rule
+      services:
+        - name: {{ .Chart.Name }}-prometheus-server
+          port: {{ .Values.prometheus.server.service.servicePort }}
+      middlewares:
+        - name: user-auth
+  tls:
+    secretName: wildcard-tls-certificate
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-alertmanager
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`alertmanager.{{ .Values.ingressHostname }}`)
+      kind: Rule
+      services:
+        - name: {{ .Chart.Name }}-alertmanager
+          port: 9093
+      middlewares:
+        - name: user-auth
+  tls:
+    secretName: wildcard-tls-certificate
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-grafana
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`grafana.{{ .Values.ingressHostname }}`)
+      kind: Rule
+      services:
+        - name: {{ .Chart.Name }}-grafana
+          port: {{ .Values.grafana.service.port }}
+  tls:
+    secretName: wildcard-tls-certificate

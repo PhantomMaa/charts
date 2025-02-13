@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-{{ include "keycloak.fullname" . }}
+  labels:
+    {{- include "keycloak.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "keycloak.selectorLabels" . | nindent 4 }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-{{ include "keycloak.fullname" . }}-headless
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    {{- include "keycloak.selectorLabels" . | nindent 4 }}
+  ports:
+    - name: jgroups
+      port: 7800
+      protocol: TCP
+      targetPort: jgroups
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http

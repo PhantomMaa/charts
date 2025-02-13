@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: keycloak/keycloak
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: keycloak
+fullnameOverride: keycloak
+
+service:
+  port: 18080
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 1000m
+    memory: 1024Mi
+
+affinity: {}
+
+dbConfig:
+  hostname: mysql
+  dbport: 3306
+  dbname: keycloak
+  username: keycloak
+  password: keycloak
+
+ingressHostname: xxx.example.com
+ingressHostnameAdmin: xxx.example.com
+adminPassword: admin
+startArgs: # selectable options : "start-dev", "build", "start --optimized"
+  - "start"

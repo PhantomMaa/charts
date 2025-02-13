@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "keycloak.fullname" . }}
+  labels:
+    {{- include "keycloak.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  serviceName: svc-{{ include "keycloak.fullname" . }}-headless
+  selector:
+    matchLabels:
+      {{- include "keycloak.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "keycloak.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: {{ .Values.startArgs }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: management
+              containerPort: 9000
+              protocol: TCP
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            - name: KC_HEALTH_ENABLED
+              value: "true"
+            - name: KC_METRICS_ENABLED
+              value: "true"
+            - name: KC_DB
+              value: mysql
+            - name: KC_DB_URL
+              value: {{ printf "jdbc:mysql://%s:%v/%s?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=false&serverTimezone=UTC" .Values.dbConfig.hostname .Values.dbConfig.dbport .Values.dbConfig.dbname }}
+            - name: KC_DB_USERNAME
+              value: {{ .Values.dbConfig.username }}
+            - name: KC_DB_PASSWORD
+              value: {{ .Values.dbConfig.password }}
+            # Below variables that are support run in http mode
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: KC_HOSTNAME
+              value: "https://{{ .Values.ingressHostname }}"
+            - name: KC_HOSTNAME_ADMIN
+              value: "https://{{ .Values.ingressHostnameAdmin }}"
+            # Below variables that are cache related
+            - name: KC_CACHE_STACK
+              value: kubernetes
+            - name: jgroups.dns.query
+              value: svc-keycloak-headless
+            # Below variables that are given a init admin user and password
+            - name: KC_BOOTSTRAP_ADMIN_USERNAME
+              value: "admin"
+            - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+              value: "{{ .Values.adminPassword }}"
+          startupProbe:
+            httpGet:
+              path: /health
+              port: management
+            initialDelaySeconds: 3
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: management
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: management
+            periodSeconds: 10
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
