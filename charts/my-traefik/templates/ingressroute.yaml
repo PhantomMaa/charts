@@ -1,0 +1,49 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-traefik
+spec:
+  entryPoints:
+{{- if eq .Values.config.https.enabled true }}
+    - websecure
+{{ else }}
+    - web
+{{- end }}
+  routes:
+    - match: Host(`traefik.{{ .Values.config.domain }}`) && (PathPrefix(`/`) || PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+{{- if eq .Values.config.auth.enabled true }}
+      middlewares:
+        - name: user-auth
+{{- end }}
+{{- if eq .Values.config.https.enabled true }}
+  tls:
+    secretName: wildcard-tls-certificate
+{{- end }}
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-traefik-ping
+spec:
+  entryPoints:
+{{- if eq .Values.config.https.enabled true }}
+    - websecure
+{{ else }}
+    - web
+{{- end }}
+  routes:
+    - match: Host(`traefik.{{ .Values.config.domain }}`) && PathPrefix(`/ping`)
+      kind: Rule
+      priority: 1000
+      services:
+        - name: ping@internal
+          kind: TraefikService
+{{- if eq .Values.config.https.enabled true }}
+  tls:
+    secretName: wildcard-tls-certificate
+{{- end }}

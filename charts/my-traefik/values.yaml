@@ -1,0 +1,22 @@
+traefik:
+  providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
+      namespaces:
+        - default
+        - infra
+
+certmanager:
+  fullnameOverride: my-certmanager
+
+config:
+  domain: xxx.com
+  https: 
+    enabled: true
+    cloudflareApiToken: XXX
+    email: xxx@xxx.com
+  auth: 
+    enabled: true
+    username: xxx== # echo -n 'admin' | base64
+    password: xxx== # echo -n '123456' | base64

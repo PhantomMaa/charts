@@ -1,0 +1,36 @@
+{{- if eq .Values.config.https.enabled true }}
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cert-cluster-issuer
+spec:
+  acme:
+    email: {{ .Values.config.https.email }}
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: cert-cluster-issuer
+    solvers:
+      - dns01:
+          cloudflare:
+            email: {{ .Values.config.https.email }}
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
+{{- end }}
+
+{{- range .Values.traefik.providers.kubernetesCRD.namespaces }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-tls-certificate
+  namespace: {{ . }}
+spec:
+  secretName: wildcard-tls-certificate
+  commonName: "*.{{ $.Values.config.domain }}"
+  dnsNames:
+    - "*.{{ $.Values.config.domain }}"
+  issuerRef:
+    name: cert-cluster-issuer
+    kind: ClusterIssuer
+{{- end }}

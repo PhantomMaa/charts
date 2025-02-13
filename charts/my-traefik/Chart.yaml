@@ -1,0 +1,19 @@
+apiVersion: v2
+name: my-traefik
+description: A Helm chart for Kubernetes
+
+type: application
+version: 1.0.3
+appVersion: 1.0.3
+
+dependencies:
+  - name: cert-manager
+    alias: certmanager
+    repository: https://charts.jetstack.io
+    # save the crds/cert-manager.crds.yaml at the same time
+    # https://github.com/cert-manager/cert-manager/releases/download/v1.17.0/cert-manager.crds.yaml
+    version: v1.17.0
+    condition: config.https.enabled
+  - name: traefik
+    repository: https://helm.traefik.io/traefik
+    version: 34.3.0
