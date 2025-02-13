@@ -11,6 +11,50 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/blinko-1.0.0/blinko-1.0.0.tgz
     version: 1.0.0
+  grafana-stack:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-02-13T07:49:41.776208685Z"
+    dependencies:
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 27.1.0
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 8.8.5
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: 6.25.0
+    - condition: tempo.enabled
+      name: tempo
+      repository: https://grafana.github.io/helm-charts
+      version: 1.18.1
+    - alias: grafanaAgentOperator
+      condition: grafanaAgentOperator.enabled
+      name: grafana-agent-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.5.0
+    description: A Helm chart for Kubernetes
+    digest: 339c57fbb6955c3ef5a5f9f5f75ba22830ce9137dbcdf8eabf8ebab77ee9ddc7
+    name: grafana-stack
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/grafana-stack-1.0.0/grafana-stack-1.0.0.tgz
+    version: 1.0.0
+  keycloak:
+  - apiVersion: v2
+    appVersion: 26.1.0
+    created: "2025-02-13T07:49:41.877356335Z"
+    description: A Helm chart for Kubernetes
+    digest: d9320e5a5bac76ad2b0bbbc5c08e84afd92e5331e3eaf3305165a6c7623751c3
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/keycloak-1.0.0/keycloak-1.0.0.tgz
+    version: 1.0.0
   umami:
   - apiVersion: v2
     appVersion: mysql-v2.15.1
@@ -42,4 +86,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-13T07:30:24.496810806Z"
+generated: "2025-02-13T07:49:41.87737515Z"
