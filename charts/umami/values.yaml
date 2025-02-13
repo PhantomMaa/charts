@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/umami-software/umami
+  pullPolicy: IfNotPresent
+  tag: mysql-latest
+
+nameOverride: umami
+fullnameOverride: umami
+
+service:
+  port: 13000
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+appSecret: xxx # use for generate jwt token
+databaseUrl: mysql://username:mypassword@localhost:3306/mydb
+ingressHostname: xxx.example.com
