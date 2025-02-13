@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "blinko.fullname" . }}
+  labels:
+    {{- include "blinko.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "blinko.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "blinko.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 1111
+              protocol: TCP
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            - name: NEXTAUTH_SECRET
+              value: {{ .Values.nextauthSecret }}
+            - name: DATABASE_URL
+              value: {{ .Values.databaseUrl }}
+            - name: NEXTAUTH_URL
+              value: http://127.0.0.1:1111
+            - name: NEXT_PUBLIC_BASE_URL
+              value: http://127.0.0.1:1111

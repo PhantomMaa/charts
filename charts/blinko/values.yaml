@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: blinkospace/blinko
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: blinko
+fullnameOverride: blinko
+
+service:
+  port: 11111
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+nextauthSecret: xxx # use for generate jwt token
+databaseUrl: postgresql://postgres:mysecretpassword@postgres:5432/postgres
+ingressHostname: xxx.example.com
