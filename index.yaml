@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  blinko:
+  - apiVersion: v2
+    appVersion: 0.38.5
+    created: "2025-02-13T07:11:15.131474475Z"
+    description: A Helm chart for Kubernetes
+    digest: f82f3249615293d41df6c9c64bc27906279af953fe709c4d36ce94ddd9263f18
+    name: blinko
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/blinko-1.0.0/blinko-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-02-13T07:11:15.131483231Z"
