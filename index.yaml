@@ -3,6 +3,16 @@ entries:
   blinko:
   - apiVersion: v2
     appVersion: 0.38.5
+    created: "2025-02-13T14:55:44.02957133Z"
+    description: A Helm chart for Kubernetes
+    digest: 50224c5af762c441ecdbabab209cf0b21a17f4e611264123d823c0823d937145
+    name: blinko
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/blinko-1.0.1/blinko-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 0.38.5
     created: "2025-02-13T07:11:15.131474475Z"
     description: A Helm chart for Kubernetes
     digest: f82f3249615293d41df6c9c64bc27906279af953fe709c4d36ce94ddd9263f18
@@ -106,4 +116,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-13T07:57:46.173932465Z"
+generated: "2025-02-13T14:55:44.029585247Z"
