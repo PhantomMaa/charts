@@ -57,19 +57,6 @@ traefik:
 helm install my-traefik my-traefik/my-traefik -f values.yaml
 ```
 
-## How to build
-```bash
-helm dependency build .
-helm package .
-helm coding-push my-traefik-1.x.x.tgz phantom-chart
-```
-
-## Publish new version
-```bash
-git tag -a v1.0.2 -m "Release v1.0.2"
-git push origin v1.0.2
-```
-
 ## Configuration
 
 ### Required Values

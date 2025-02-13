@@ -15,5 +15,5 @@ dependencies:
     version: v1.17.0
     condition: config.https.enabled
   - name: traefik
-    repository: https://helm.traefik.io/traefik
+    repository: https://traefik.github.io/charts
     version: 34.3.0
