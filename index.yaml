@@ -65,6 +65,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/keycloak-1.0.0/keycloak-1.0.0.tgz
     version: 1.0.0
+  maybe:
+  - apiVersion: v2
+    appVersion: stable
+    created: "2025-02-17T10:35:33.655650596Z"
+    description: A Helm chart for Kubernetes
+    digest: a3e648f92e808885a6857dfea0249b56d86292bbf96021f15d5480f8fb32e531
+    name: maybe
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/maybe-1.0.0/maybe-1.0.0.tgz
+    version: 1.0.0
   my-traefik:
   - apiVersion: v2
     appVersion: 1.0.3
@@ -116,4 +127,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-13T14:55:44.029585247Z"
+generated: "2025-02-17T10:35:33.655668149Z"
