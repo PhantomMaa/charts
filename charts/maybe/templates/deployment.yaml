@@ -28,11 +28,11 @@ spec:
           {{- end }}
           env:
             - name: SELF_HOSTED
-              value: true
+              value: "true"
             - name: RAILS_FORCE_SSL
-              value: false
+              value: "false"
             - name: RAILS_ASSUME_SSL
-              value: false
+              value: "false"
             - name: GOOD_JOB_EXECUTION_MODE
               value: async
             - name: SECRET_KEY_BASE
