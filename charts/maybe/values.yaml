@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: maybe
+fullnameOverride: maybe
+
+service:
+  port: 13033
+
+resources: {}
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # limits:
+  #   cpu: 500m
+  #   memory: 512Mi
+
+secretKeyBase: xxx
+dbHost: postgres.ns.svc
+postgresDb: xxx
+postgresUser: xxx
+postgresPassword: xxx

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "maybe.fullname" . }}
+  labels:
+    {{- include "maybe.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "maybe.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "maybe.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            - name: SELF_HOSTED
+              value: true
+            - name: RAILS_FORCE_SSL
+              value: false
+            - name: RAILS_ASSUME_SSL
+              value: false
+            - name: GOOD_JOB_EXECUTION_MODE
+              value: async
+            - name: SECRET_KEY_BASE
+              value: {{ .Values.secretKeyBase }}
+            - name: DB_HOST
+              value: {{ .Values.dbHost }}
+            - name: POSTGRES_DB
+              value: {{ .Values.postgresDb }}
+            - name: POSTGRES_USER
+              value: {{ .Values.postgresUser }}
+            - name: POSTGRES_PASSWORD
+              value: {{ .Values.postgresPassword }}
