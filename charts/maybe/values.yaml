@@ -24,3 +24,4 @@ dbHost: postgres.ns.svc
 postgresDb: xxx
 postgresUser: xxx
 postgresPassword: xxx
+ingressHostname: xxx.example.com
