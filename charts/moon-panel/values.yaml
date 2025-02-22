@@ -1,0 +1,57 @@
+nameOverride: moon-panel
+fullnameOverride: moon-panel
+ingressHostname: xxx.example.com
+
+backend: 
+  replicaCount: 1
+
+  image:
+    repository: ghcr.io/phantommaa/sun-panel/backend
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  resources: 
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 20Mi
+
+  mysql: 
+    host: host_or_ip
+    port: 3306
+    username: root
+    password: password
+    db_name: moonpanel
+  
+  s3: 
+    access_key_id: AK
+    secret_access_key: SK
+    endpoint: s3.ap-east-1.example.com
+    bucket: bucket
+    region: ap-east-1
+
+  jwt:
+    secret: replace_me
+    expire: 72  # hours
+
+frontend: 
+  replicaCount: 1
+
+  image:
+    repository: ghcr.io/phantommaa/sun-panel/frontend
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  service:
+    port: 3080
+
+  resources: 
+    limits:
+      cpu: 1000m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 10Mi
+

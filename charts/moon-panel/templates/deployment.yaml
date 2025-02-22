@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "moon-panel.fullname" . }}-backend
+  labels:
+    {{- include "moon-panel.labels-backend" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "moon-panel.selectorLabels-backend" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "moon-panel.labels-backend" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-backend
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3002
+              protocol: TCP
+          {{- with .Values.backend.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
+              mountPath: /app/conf/conf.ini
+              subPath: conf.ini
+      volumes:
+        - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
+          configMap:
+            name: {{ include "moon-panel.fullname" . }}-backend-conf
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "moon-panel.fullname" . }}-frontend
+  labels:
+    {{- include "moon-panel.labels-frontend" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "moon-panel.selectorLabels-frontend" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "moon-panel.labels-frontend" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-frontend
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          {{- with .Values.frontend.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.frontend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
