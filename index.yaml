@@ -76,6 +76,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/maybe-1.0.0/maybe-1.0.0.tgz
     version: 1.0.0
+  moon-panel:
+  - apiVersion: v2
+    appVersion: v1.3.1
+    created: "2025-02-22T16:09:57.855514409Z"
+    description: A Helm chart for Kubernetes
+    digest: 0f5e3e5ca6515e4935f559b529d2e5785ff525b89bb5b42e7ca96345d2e3f37d
+    name: moon-panel
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/moon-panel-1.0.0/moon-panel-1.0.0.tgz
+    version: 1.0.0
   my-traefik:
   - apiVersion: v2
     appVersion: 1.0.3
@@ -127,4 +138,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-17T10:35:33.655668149Z"
+generated: "2025-02-22T16:09:57.855533435Z"
