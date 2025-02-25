@@ -4,8 +4,8 @@
   http_port=3002
   # Database driver [mysql/sqlite(Default)]
   database_drive=mysql
-  # Storage driver [s3/local(Default)]. In local mode, the file path is fixed set '/app/uploads'
-  storage_drive=s3
+  # Enable static file server. Default:true
+  static_server=false
 
   # optional, valid when database_drive=mysql
   [mysql]
@@ -16,17 +16,15 @@
   db_name={{ .Values.backend.mysql.db_name}}
   wait_timeout=100
 
-  # optional, valid when database_drive=sqlite
-  [sqlite]
-  file_path=./database/database.db
-
-  # optional, valid when storage_drive=s3
-  [s3]
-  access_key_id={{ .Values.backend.s3.access_key_id}}
-  secret_access_key={{ .Values.backend.s3.secret_access_key}}
-  endpoint={{ .Values.backend.s3.endpoint}}
-  bucket={{ .Values.backend.s3.bucket}}
-  region={{ .Values.backend.s3.region}}
+  # Use rclone to store files. Both support local and remote storage
+  [rclone]
+  type=s3
+  provider={{ .Values.backend.rclone.provider}}
+  access_key_id={{ .Values.backend.rclone.access_key_id}}
+  secret_access_key={{ .Values.backend.rclone.secret_access_key}}
+  endpoint={{ .Values.backend.rclone.endpoint}}
+  bucket={{ .Values.backend.rclone.endpoint}}
+  region={{ .Values.backend.rclone.region}}
 
   [jwt]
   # JWT secret key

@@ -25,10 +25,10 @@ backend:
     password: password
     db_name: moonpanel
   
-  s3: 
+  rclone: 
     access_key_id: AK
     secret_access_key: SK
-    endpoint: s3.ap-east-1.example.com
+    endpoint: example.com
     bucket: bucket
     region: ap-east-1
 
