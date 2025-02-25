@@ -26,6 +26,7 @@ backend:
     db_name: moonpanel
   
   rclone: 
+    provider: xxx # Minio, Alibaba, AWS, webdav, etc.
     access_key_id: AK
     secret_access_key: SK
     endpoint: example.com

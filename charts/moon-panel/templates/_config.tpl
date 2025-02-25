@@ -23,7 +23,7 @@
   access_key_id={{ .Values.backend.rclone.access_key_id}}
   secret_access_key={{ .Values.backend.rclone.secret_access_key}}
   endpoint={{ .Values.backend.rclone.endpoint}}
-  bucket={{ .Values.backend.rclone.endpoint}}
+  bucket={{ .Values.backend.rclone.bucket}}
   region={{ .Values.backend.rclone.region}}
 
   [jwt]
