@@ -31,7 +31,7 @@ backend:
     secret_access_key: SK
     endpoint: example.com
     bucket: bucket
-    region: ap-east-1
+    region: 
 
   jwt:
     secret: replace_me
