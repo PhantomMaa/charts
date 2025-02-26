@@ -5,9 +5,9 @@ http_port=3002
 # Database driver [mysql/sqlite(Default)]
 database_drive=mysql
 # Enable static file server. Default:true
-enable_static_server=false
-# Default is "/api/file/s3/". When combine with nginx cache, use "/static/"
-file_prefix=/static/
+enable_static_server=true
+# Used as prefix to generate file url. For example, "/uploads/xxxx.png"
+source_path=uploads
 
 # optional, valid when database_drive=mysql
 [mysql]
