@@ -120,6 +120,25 @@ entries:
     version: 1.0.0
   my-traefik:
   - apiVersion: v2
+    appVersion: 1.0.4
+    created: "2025-03-10T15:15:49.491982664Z"
+    dependencies:
+    - alias: certmanager
+      condition: config.https.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.17.1
+    - name: traefik
+      repository: https://traefik.github.io/charts
+      version: 34.4.1
+    description: A Helm chart for Kubernetes
+    digest: bb0a3ed6ae5a2d90a72bd1681e5670f1bdd1a302b38abd25cd1e6fe88e5d9ff2
+    name: my-traefik
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/my-traefik-1.0.4/my-traefik-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
     appVersion: 1.0.3
     created: "2025-02-13T07:57:46.173919811Z"
     dependencies:
@@ -169,4 +188,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-10T12:58:57.403216952Z"
+generated: "2025-03-10T15:15:49.491998543Z"
