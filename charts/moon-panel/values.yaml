@@ -1,6 +1,5 @@
 nameOverride: moon-panel
 fullnameOverride: moon-panel
-ingressHostname: xxx.example.com
 
 backend: 
   replicaCount: 1
@@ -48,6 +47,10 @@ frontend:
   service:
     port: 3080
 
+  ingress:
+    enabled: true
+    hostname: moonpanel.example.com
+    
   resources: 
     limits:
       cpu: 1000m
@@ -55,4 +58,8 @@ frontend:
     requests:
       cpu: 100m
       memory: 10Mi
+
+  tolerations: []
+
+  affinity: {}
 
