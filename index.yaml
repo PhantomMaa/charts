@@ -76,6 +76,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/maybe-1.0.0/maybe-1.0.0.tgz
     version: 1.0.0
+  memos:
+  - apiVersion: v2
+    appVersion: stable
+    created: "2025-03-10T12:58:57.40319448Z"
+    description: A Helm chart for Kubernetes
+    digest: f2f3e2125ede56a921a1637f8aa7f3d2833bfd63aca3f5a784d2d192535738b4
+    name: memos
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/memos-1.0.0/memos-1.0.0.tgz
+    version: 1.0.0
   moon-panel:
   - apiVersion: v2
     appVersion: v1.3.3-beta-8
@@ -158,4 +169,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-10T12:43:31.979532427Z"
+generated: "2025-03-10T12:58:57.403216952Z"
