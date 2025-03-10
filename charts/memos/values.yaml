@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: neosmemo/memos
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 15230
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+database:
+  driver: mysql
+  dsn: root:password@tcp(localhost)/memos_prod
+  # driver: postgres
+  # dsn: postgresql://root:password@localhost:5432/memos
+
+ingressHostname: xxx.example.com
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
