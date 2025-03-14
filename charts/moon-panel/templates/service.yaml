@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sun-panel-backend
+  name: svc-{{ include "moon-panel.fullname" . }}-backend
   labels:
     {{- include "moon-panel.labels-backend" . | nindent 4 }}
 spec:
