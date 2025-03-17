@@ -36,6 +36,10 @@ backend:
     secret: replace_me
     expire: 72  # hours
 
+  tolerations: []
+
+  affinity: {}
+
 frontend: 
   replicaCount: 1
 

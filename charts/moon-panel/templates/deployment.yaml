@@ -34,7 +34,14 @@ spec:
         - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
           configMap:
             name: {{ include "moon-panel.fullname" . }}-backend-conf
-
+      {{- with .Values.backend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.backend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
 
 ---
 apiVersion: apps/v1
