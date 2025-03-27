@@ -89,6 +89,16 @@ entries:
     version: 1.0.0
   moon-panel:
   - apiVersion: v2
+    appVersion: v1.3.4-beta-2
+    created: "2025-03-27T16:07:03.40009295Z"
+    description: A Helm chart for Kubernetes
+    digest: e099889694de1dd5a0144b6e0bf414a4ee723a60796052a88f02d3f108ecf688
+    name: moon-panel
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/moon-panel-1.0.3/moon-panel-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     appVersion: v1.3.3-beta-8
     created: "2025-03-10T12:43:31.979511809Z"
     description: A Helm chart for Kubernetes
@@ -188,4 +198,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-10T15:15:49.491998543Z"
+generated: "2025-03-27T16:07:03.400131292Z"
