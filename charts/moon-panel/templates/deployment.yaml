@@ -28,8 +28,8 @@ spec:
           {{- end }}
           volumeMounts:
             - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
-              mountPath: /app/conf.ini
-              subPath: conf.ini
+              mountPath: /app/conf.yaml
+              subPath: conf.yaml
       volumes:
         - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
           configMap:
