@@ -51,6 +51,15 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
+{{- define "moon-panel.labels-site" -}}
+helm.sh/chart: {{ include "moon-panel.chart" . }}
+{{ include "moon-panel.selectorLabels-site" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
 {{/*
 Selector labels
 */}}
@@ -62,6 +71,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}-backend
 {{- define "moon-panel.selectorLabels-frontend" -}}
 app.kubernetes.io/name: {{ include "moon-panel.name" . }}-frontend
 app.kubernetes.io/instance: {{ .Release.Name }}-frontend
+{{- end }}
+
+{{- define "moon-panel.selectorLabels-site" -}}
+app.kubernetes.io/name: {{ include "moon-panel.name" . }}-site
+app.kubernetes.io/instance: {{ .Release.Name }}-site
 {{- end }}
 
 {{/*

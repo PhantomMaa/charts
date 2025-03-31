@@ -30,3 +30,20 @@ spec:
       name: http
   selector:
     {{- include "moon-panel.selectorLabels-frontend" . | nindent 4 }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-{{ include "moon-panel.fullname" . }}-site
+  labels:
+    {{- include "moon-panel.labels-site" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3001
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "moon-panel.selectorLabels-site" . | nindent 4 }}

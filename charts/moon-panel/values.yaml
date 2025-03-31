@@ -122,3 +122,27 @@ frontend:
 
   affinity: {}
 
+
+site: 
+  replicaCount: 1
+
+  imagePullSecrets: 
+    - name: ghcr-secret
+
+  image:
+    repository: ghcr.io/phantommaa/moonbox-site/moon-panel-site
+    pullPolicy: Always
+    tag: v1.0.0-snap
+
+  resources: 
+    limits:
+      cpu: 1000m
+      memory: 20Mi
+    requests:
+      cpu: 100m
+      memory: 10Mi
+
+  tolerations: []
+
+  affinity: {}
+
