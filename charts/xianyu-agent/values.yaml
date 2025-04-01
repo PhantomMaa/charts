@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/phantommaa/xianyu-auto-agent
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Secret settings - these will be stored as Kubernetes secrets
+secrets:
+  OPENAI_API_KEY: ""
+  COOKIES_STR: ""
+
+prompts:
+  classify_prompt: ""
+  default_prompt: ""
+  price_prompt: ""
+  tech_prompt: ""

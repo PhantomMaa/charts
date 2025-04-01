@@ -132,7 +132,7 @@ site:
   image:
     repository: ghcr.io/phantommaa/moonbox-site/moon-panel-site
     pullPolicy: Always
-    tag: v1.0.0-snap
+    tag: latest
 
   resources: 
     limits:

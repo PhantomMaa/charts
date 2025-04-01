@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "xianyu-agent.fullname" . }}
+  labels:
+    {{- include "xianyu-agent.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "xianyu-agent.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "xianyu-agent.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            # Environment variables from secrets
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "xianyu-agent.fullname" . }}
+                  key: OPENAI_API_KEY
+            - name: COOKIES_STR
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "xianyu-agent.fullname" . }}
+                  key: COOKIES_STR
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
