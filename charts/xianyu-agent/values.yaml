@@ -11,10 +11,10 @@ fullnameOverride: ""
 resources:
   limits:
     cpu: 500m
-    memory: 512Mi
+    memory: 200Mi
   requests:
     cpu: 100m
-    memory: 128Mi
+    memory: 50Mi
 
 # Secret settings - these will be stored as Kubernetes secrets
 secrets:

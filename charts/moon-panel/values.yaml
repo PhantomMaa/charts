@@ -130,7 +130,7 @@ site:
     - name: ghcr-secret
 
   image:
-    repository: ghcr.io/phantommaa/moonbox-site/moon-panel-site
+    repository: ghcr.io/phantommaa/moonbox-site
     pullPolicy: Always
     tag: latest
 
