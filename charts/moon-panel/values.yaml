@@ -126,8 +126,7 @@ frontend:
 site: 
   replicaCount: 1
 
-  imagePullSecrets: 
-    - name: ghcr-secret
+  imagePullSecrets: []
 
   image:
     repository: ghcr.io/phantommaa/moonbox-site
