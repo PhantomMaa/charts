@@ -89,6 +89,16 @@ entries:
     version: 1.0.0
   moon-panel:
   - apiVersion: v2
+    appVersion: v1.3.4-beta-10
+    created: "2025-04-07T02:02:19.790894509Z"
+    description: A Helm chart for Kubernetes
+    digest: 400dc1e289a8ade8e78609fb428e5575a881a987e4b81668be11d7a93367edb2
+    name: moon-panel
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/moon-panel-1.0.5/moon-panel-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
     appVersion: v1.3.4-beta-4
     created: "2025-03-31T11:24:42.816453987Z"
     description: A Helm chart for Kubernetes
@@ -208,4 +218,16 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/umami-0.1.0/umami-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-31T11:24:42.816486056Z"
+  xianyu-agent:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-04-07T02:02:19.954694476Z"
+    description: A Helm chart for XianyuAutoAgent - AI-powered customer service bot
+      for Xianyu platform
+    digest: 8064e0231a803010e1919397cd8957a7224c46a8a264ab74c4de1fc7ab8eeb74
+    name: xianyu-agent
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-04-07T02:02:19.954733039Z"
