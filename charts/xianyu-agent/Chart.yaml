@@ -4,4 +4,4 @@ description: A Helm chart for XianyuAutoAgent - AI-powered customer service bot 
 type: application
 
 version: 0.1.2
-appVersion: v1.0.0
+appVersion: v1.1.1
