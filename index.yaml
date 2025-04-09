@@ -221,6 +221,17 @@ entries:
   xianyu-agent:
   - apiVersion: v2
     appVersion: v1.0.1-beta-1
+    created: "2025-04-09T06:07:53.185140424Z"
+    description: A Helm chart for XianyuAutoAgent - AI-powered customer service bot
+      for Xianyu platform
+    digest: 0cf021611fea33195584fc37d9cffc7cc85c4710feaaeb09fe7278deaf2a32ad
+    name: xianyu-agent
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.4/xianyu-agent-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: v1.0.1-beta-1
     created: "2025-04-08T13:41:31.109848558Z"
     description: A Helm chart for XianyuAutoAgent - AI-powered customer service bot
       for Xianyu platform
@@ -252,4 +263,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-08T13:41:31.109886429Z"
+generated: "2025-04-09T06:07:53.185187503Z"
