@@ -9,7 +9,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 resources:
-  limits: 
+  limits: # Params required to run playwright safely
     cpu: 2000m
     memory: 2000Mi
   requests: 
