@@ -21,6 +21,18 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/blinko-1.0.0/blinko-1.0.0.tgz
     version: 1.0.0
+  freshmeat-agent:
+  - apiVersion: v2
+    appVersion: v1.0.1-beta-1
+    created: "2025-04-09T09:33:44.375335932Z"
+    description: A Helm chart for freshmeat-agent - AI-powered customer service bot
+      for Xianyu platform
+    digest: d502f023e87016176736331bb380eab566584419ed53f53766848403e20f4e4a
+    name: freshmeat-agent
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/freshmeat-agent-1.0.1/freshmeat-agent-1.0.1.tgz
+    version: 1.0.1
   grafana-stack:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -263,4 +275,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-09T06:07:53.185187503Z"
+generated: "2025-04-09T09:33:44.37537241Z"
