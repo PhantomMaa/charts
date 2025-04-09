@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/phantommaa/xianyu-auto-agent
+  repository: ghcr.io/phantommaa/freshmeat-agent
   pullPolicy: IfNotPresent
   tag: ""
 

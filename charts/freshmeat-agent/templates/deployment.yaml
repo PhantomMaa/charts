@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "xianyu-agent.fullname" . }}
+  name: {{ include "freshmeat-agent.fullname" . }}
   labels:
-    {{- include "xianyu-agent.labels" . | nindent 4 }}
+    {{- include "freshmeat-agent.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "xianyu-agent.selectorLabels" . | nindent 6 }}
+      {{- include "freshmeat-agent.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "xianyu-agent.selectorLabels" . | nindent 8 }}
+        {{- include "freshmeat-agent.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -23,12 +23,12 @@ spec:
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "xianyu-agent.fullname" . }}
+                  name: {{ include "freshmeat-agent.fullname" . }}
                   key: OPENAI_API_KEY
             - name: COOKIES_STR
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "xianyu-agent.fullname" . }}
+                  name: {{ include "freshmeat-agent.fullname" . }}
                   key: COOKIES_STR
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
