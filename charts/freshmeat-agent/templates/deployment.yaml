@@ -25,6 +25,16 @@ spec:
                 secretKeyRef:
                   name: {{ include "freshmeat-agent.fullname" . }}
                   key: OPENAI_API_KEY
+            - name: OPENAI_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "freshmeat-agent.fullname" . }}
+                  key: OPENAI_BASE_URL
+            - name: LLM_MODEL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "freshmeat-agent.fullname" . }}
+                  key: LLM_MODEL
             - name: COOKIES_STR
               valueFrom:
                 secretKeyRef:

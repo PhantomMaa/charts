@@ -10,7 +10,7 @@ fullnameOverride: ""
 
 resources:
   limits: # Params required to run playwright safely
-    cpu: 2000m
+    cpu: 4000m
     memory: 2000Mi
   requests: 
     cpu: 50m
@@ -19,6 +19,8 @@ resources:
 # Secret settings - these will be stored as Kubernetes secrets
 secrets:
   OPENAI_API_KEY: ""
+  OPENAI_BASE_URL: ""
+  LLM_MODEL: ""
   COOKIES_STR: ""
 
 nodeSelector: {}

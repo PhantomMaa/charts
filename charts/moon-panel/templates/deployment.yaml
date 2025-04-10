@@ -26,6 +26,11 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          env:
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           volumeMounts:
             - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
               mountPath: /app/conf.yaml
