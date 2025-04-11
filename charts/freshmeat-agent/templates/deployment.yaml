@@ -4,6 +4,10 @@ metadata:
   name: {{ include "freshmeat-agent.fullname" . }}
   labels:
     {{- include "freshmeat-agent.labels" . | nindent 4 }}
+  annotations:
+    {{- if .Values.prompts.useConfigMap }}
+    checksum/config: {{ include (print $.Template.BasePath "/configmap-prompts.yaml") . | sha256sum }}
+    {{- end }}
 spec:
   replicas: 1
   selector:
@@ -13,6 +17,10 @@ spec:
     metadata:
       labels:
         {{- include "freshmeat-agent.selectorLabels" . | nindent 8 }}
+      annotations:
+        {{- if .Values.prompts.useConfigMap }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap-prompts.yaml") . | sha256sum }}
+        {{- end }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -42,6 +50,11 @@ spec:
                   key: COOKIES_STR
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            {{- if .Values.prompts.useConfigMap }}
+            - name: prompts-volume
+              mountPath: /app/prompts
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
       {{- toYaml . | nindent 8 }}
@@ -54,3 +67,9 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        {{- if .Values.prompts.useConfigMap }}
+        - name: prompts-volume
+          configMap:
+            name: {{ include "freshmeat-agent.fullname" . }}-prompts
+        {{- end }}
