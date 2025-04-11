@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "freshmeat-agent.labels" . | nindent 4 }}
   annotations:
-    {{- if .Values.prompts.useConfigMap }}
     checksum/config: {{ include (print $.Template.BasePath "/configmap-prompts.yaml") . | sha256sum }}
-    {{- end }}
 spec:
   replicas: 1
   selector:
@@ -18,46 +16,30 @@ spec:
       labels:
         {{- include "freshmeat-agent.selectorLabels" . | nindent 8 }}
       annotations:
-        {{- if .Values.prompts.useConfigMap }}
         checksum/config: {{ include (print $.Template.BasePath "/configmap-prompts.yaml") . | sha256sum }}
-        {{- end }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            # Environment variables from secrets
-            - name: OPENAI_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "freshmeat-agent.fullname" . }}
-                  key: OPENAI_API_KEY
-            - name: OPENAI_BASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "freshmeat-agent.fullname" . }}
-                  key: OPENAI_BASE_URL
-            - name: LLM_MODEL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "freshmeat-agent.fullname" . }}
-                  key: LLM_MODEL
-            - name: COOKIES_STR
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "freshmeat-agent.fullname" . }}
-                  key: COOKIES_STR
+          envFrom:
+            - secretRef:
+                name: {{ include "freshmeat-agent.fullname" . }}-secrets
+          {{- if .Values.prompts.files }}
+          volumeMounts:
+            {{- range $key, $value := .Values.prompts.files }}
+            {{- if not (empty $value) }}
+            - name: prompts-volume
+              mountPath: /app/prompts/{{ $key }}
+              subPath: {{ $key }}
+            {{- end }}
+            {{- end }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            {{- if .Values.prompts.useConfigMap }}
-            - name: prompts-volume
-              mountPath: /app/prompts
-            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
-      {{- toYaml . | nindent 8 }}
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.affinity }}
       affinity:
@@ -68,8 +50,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        {{- if .Values.prompts.useConfigMap }}
         - name: prompts-volume
           configMap:
             name: {{ include "freshmeat-agent.fullname" . }}-prompts
-        {{- end }}

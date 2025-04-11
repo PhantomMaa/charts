@@ -31,17 +31,10 @@ affinity: {}
 
 # Prompts configuration
 prompts:
-  # If enabled, will mount prompts from ConfigMap instead of using built-in ones
-  useConfigMap: false
-  # Prompt files content
+  # Prompt files content. if empty, will use built-in prompts
   files:
-    classify.txt: |
-      # Default classify prompt content
-    common.txt: |
-      # Default common prompt content
-    expert.txt: |
-      # Default expert prompt content
-    general.txt: |
-      # Default general prompt content
-    bargain.txt: |
-      # Default bargain prompt content
+    classify.txt: ""
+    common.txt: ""
+    tech.txt: ""
+    general.txt: ""
+    bargain.txt: ""

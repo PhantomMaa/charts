@@ -1,4 +1,3 @@
-{{- if .Values.prompts.useConfigMap }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,7 +6,8 @@ metadata:
     {{- include "freshmeat-agent.labels" . | nindent 4 }}
 data:
   {{- range $key, $value := .Values.prompts.files }}
+  {{- if not (empty $value) }}
   {{ $key }}: |
     {{- $value | nindent 4 }}
   {{- end }}
-{{- end }} 
+  {{- end }} 
