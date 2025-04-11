@@ -27,28 +27,26 @@ affinity: {}
 config:
   base:
     log_level: INFO
-  openai:
-    api_key: ""
-    base_url: ""
-    model: ""
   xianyu:
     cookies: ""
-    timeout: 30
-    retry_times: 3
-
-# Secret settings - these will be stored as Kubernetes secrets
-secrets:
-  OPENAI_API_KEY: ""
-  OPENAI_BASE_URL: ""
-  LLM_MODEL: ""
-  COOKIES_STR: ""
+  openai:
+    api_key: your-secret-key
+    base_url: https://openrouter.ai/api/v1/
+    models:
+      classify: google/gemini-2.0-flash-lite-001
+      experts:
+        tech: anthropic/claude-3.7-sonnet
+        general: deepseek/deepseek-chat-v3-0324
+        bargain: deepseek/deepseek-chat-v3-0324
 
 # Prompts configuration
 prompts:
   # Prompt files content. if empty, will use built-in prompts
   files:
+    # Prompts used for classification
     classify.txt: ""
-    common.txt: ""
     tech.txt: ""
     general.txt: ""
     bargain.txt: ""
+    # Common prompts, which will be appended to other expert prompts 
+    common.txt: ""
