@@ -102,6 +102,16 @@ entries:
   moon-panel:
   - apiVersion: v2
     appVersion: v1.3.4-beta-11
+    created: "2025-04-11T08:14:45.095831362Z"
+    description: A Helm chart for Kubernetes
+    digest: 02faf873cd082a0d4dd1942d296a08a298856791b9018fa0cb487afb56bb48de
+    name: moon-panel
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/moon-panel-1.0.7/moon-panel-1.0.7.tgz
+    version: 1.0.7
+  - apiVersion: v2
+    appVersion: v1.3.4-beta-11
     created: "2025-04-10T03:38:34.718935055Z"
     description: A Helm chart for Kubernetes
     digest: bed85b685e9b4c932e29e9e0f86480804ababf6dca6419ad0b4642f211c9ac25
@@ -285,4 +295,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-10T03:38:34.718983005Z"
+generated: "2025-04-11T08:14:45.095879922Z"
