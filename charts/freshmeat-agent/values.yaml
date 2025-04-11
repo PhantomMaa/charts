@@ -7,6 +7,7 @@ image:
 
 nameOverride: ""
 fullnameOverride: ""
+securityContext: {}
 
 resources:
   limits: # Params required to run playwright safely
@@ -16,18 +17,31 @@ resources:
     cpu: 50m
     memory: 64Mi
 
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Application configuration
+config:
+  base:
+    log_level: INFO
+  openai:
+    api_key: ""
+    base_url: ""
+    model: ""
+  xianyu:
+    cookies: ""
+    timeout: 30
+    retry_times: 3
+
 # Secret settings - these will be stored as Kubernetes secrets
 secrets:
   OPENAI_API_KEY: ""
   OPENAI_BASE_URL: ""
   LLM_MODEL: ""
   COOKIES_STR: ""
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
 
 # Prompts configuration
 prompts:

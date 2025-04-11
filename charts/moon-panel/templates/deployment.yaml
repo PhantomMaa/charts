@@ -111,10 +111,6 @@ spec:
       labels:
         {{- include "moon-panel.labels-site" . | nindent 8 }}
     spec:
-      {{- with .Values.site.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}-site
           image: "{{ .Values.site.image.repository }}:{{ .Values.site.image.tag | default .Chart.AppVersion }}"

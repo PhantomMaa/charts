@@ -128,8 +128,6 @@ frontend:
 site: 
   replicaCount: 1
 
-  imagePullSecrets: []
-
   image:
     repository: ghcr.io/phantommaa/moonbox-site
     pullPolicy: Always
