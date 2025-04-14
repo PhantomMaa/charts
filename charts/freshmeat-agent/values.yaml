@@ -41,12 +41,12 @@ config:
 
 # Prompts configuration
 prompts:
-  # Prompt files content. if empty, will use built-in prompts
+  # Prompt files
   files:
-    # Prompts used for classification
-    classify.txt: ""
-    tech.txt: ""
-    general.txt: ""
-    bargain.txt: ""
-    # Common prompts, which will be appended to other expert prompts 
-    common.txt: ""
+    - "classify_txt"
+    - "bargain_txt"
+    - "tech_txt"
+    - "general_txt"
+    - "common_txt"
+  # Prompt words customized for individuals
+  custom_txt: ""

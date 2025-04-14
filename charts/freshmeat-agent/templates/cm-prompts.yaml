@@ -1,13 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "freshmeat-agent.fullname" . }}-prompts
+  name: {{ include "freshmeat-agent.fullname" . }}-prompts-custom
   labels:
     {{- include "freshmeat-agent.labels" . | nindent 4 }}
 data:
-  {{- range $key, $value := .Values.prompts.files }}
-  {{- if not (empty $value) }}
-  {{ $key }}: |
-    {{- $value | nindent 4 }}
+  {{- if not (empty .Values.prompts.custom_txt) }}
+  custom_txt: |
+    {{- .Values.prompts.custom_txt | nindent 4 }}
   {{- end }}
-  {{- end }} 

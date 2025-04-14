@@ -30,14 +30,15 @@ spec:
             - name: config-volume
               mountPath: /app/config.yaml
               subPath: config.yaml
-            {{- if .Values.prompts.files }}
-            {{- range $key, $value := .Values.prompts.files }}
-            {{- if not (empty $value) }}
+            {{- range $file := .Values.prompts.files }}
             - name: prompts-volume
-              mountPath: /app/prompts/{{ $key }}
-              subPath: {{ $key }}
+              mountPath: /app/prompts/{{ $file }}
+              subPath: {{ $file }}
             {{- end }}
-            {{- end }}
+            {{- if not (empty .Values.prompts.custom_txt) }}
+            - name: prompts-volume-custom
+              mountPath: /app/prompts/custom_txt
+              subPath: custom_txt
             {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
@@ -57,8 +58,11 @@ spec:
         - name: config-volume
           configMap:
             name: {{ include "freshmeat-agent.fullname" . }}-config
-        {{- if .Values.prompts.files }}
         - name: prompts-volume
           configMap:
-            name: {{ include "freshmeat-agent.fullname" . }}-prompts
+            name: freshmeat-agent-prompts
+        {{- if not (empty .Values.prompts.custom_txt) }}
+        - name: prompts-volume-custom
+          configMap:
+            name: {{ include "freshmeat-agent.fullname" . }}-prompts-custom
         {{- end }}
