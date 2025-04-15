@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "freshmeat-agent.fullname" . }}
+  name: {{ include "freshmeat-ai.fullname" . }}
   labels:
-    {{- include "freshmeat-agent.labels" . | nindent 4 }}
+    {{- include "freshmeat-ai.labels" . | nindent 4 }}
   annotations:
     checksum/config: {{ include (print $.Template.BasePath "/cm-config.yaml") . | sha256sum }}
     checksum/prompts: {{ include (print $.Template.BasePath "/cm-prompts.yaml") . | sha256sum }}
@@ -11,11 +11,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "freshmeat-agent.selectorLabels" . | nindent 6 }}
+      {{- include "freshmeat-ai.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "freshmeat-agent.selectorLabels" . | nindent 8 }}
+        {{- include "freshmeat-ai.selectorLabels" . | nindent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/cm-config.yaml") . | sha256sum }}
         checksum/prompts: {{ include (print $.Template.BasePath "/cm-prompts.yaml") . | sha256sum }}
@@ -57,12 +57,12 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: {{ include "freshmeat-agent.fullname" . }}-config
+            name: {{ include "freshmeat-ai.fullname" . }}-config
         - name: prompts-volume
           configMap:
-            name: freshmeat-agent-prompts
+            name: freshmeat-ai-prompts
         {{- if not (empty .Values.prompts.custom_txt) }}
         - name: prompts-volume-custom
           configMap:
-            name: {{ include "freshmeat-agent.fullname" . }}-prompts-custom
+            name: {{ include "freshmeat-ai.fullname" . }}-prompts-custom
         {{- end }}

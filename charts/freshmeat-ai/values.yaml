@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/phantommaa/freshmeat-agent
+  repository: ghcr.io/phantommaa/freshmeat-ai
   pullPolicy: IfNotPresent
   tag: ""
 
@@ -38,6 +38,13 @@ config:
         tech: anthropic/claude-3.7-sonnet
         general: deepseek/deepseek-chat-v3-0324
         bargain: deepseek/deepseek-chat-v3-0324
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    username: root
+    password: root
+    db_name: freshmeat
+    wait_timeout: 100
 
 # Prompts configuration
 prompts:
