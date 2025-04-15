@@ -33,6 +33,18 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/freshmeat-agent-1.0.1/freshmeat-agent-1.0.1.tgz
     version: 1.0.1
+  freshmeat-ai:
+  - apiVersion: v2
+    appVersion: v1.0.1-beta-1
+    created: "2025-04-15T02:01:18.389232142Z"
+    description: A Helm chart for freshmeat-ai - AI-powered customer service bot for
+      Xianyu platform
+    digest: 08574e62a7b791132c2851bddbf8ca374393908c6abde67ad36ada311640951c
+    name: freshmeat-ai
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/freshmeat-ai-1.0.1/freshmeat-ai-1.0.1.tgz
+    version: 1.0.1
   grafana-stack:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -295,4 +307,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-11T08:14:45.095879922Z"
+generated: "2025-04-15T02:01:18.389275463Z"
