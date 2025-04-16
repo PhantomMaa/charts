@@ -27,6 +27,10 @@ affinity: {}
 config:
   base:
     log_level: INFO
+    bargain:
+      base_temperature: 0.2
+      temperature_step: 0.15
+      max_temperature: 0.75
   xianyu:
     cookies: ""
   openai:
@@ -48,12 +52,14 @@ config:
 
 # Prompts configuration
 prompts:
+  configmap_name_suffix: "common-prompts"
   # Prompt files
   files:
     - "classify_txt"
+    - "common_pre_txt"
     - "bargain_txt"
     - "tech_txt"
     - "general_txt"
-    - "common_txt"
+    - "common_end_txt"
   # Prompt words customized for individuals
   custom_txt: ""

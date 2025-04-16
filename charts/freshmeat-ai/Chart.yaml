@@ -4,4 +4,4 @@ description: A Helm chart for freshmeat-ai - AI-powered customer service bot for
 type: application
 
 version: 1.0.1
-appVersion: v1.0.1-beta-1
+appVersion: v1.0.1-beta-22

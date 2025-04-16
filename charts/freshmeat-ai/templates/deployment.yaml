@@ -60,7 +60,7 @@ spec:
             name: {{ include "freshmeat-ai.fullname" . }}-config
         - name: prompts-volume
           configMap:
-            name: freshmeat-ai-prompts
+            name: {{ .Chart.Name }}-{{ .Values.prompts.configmap_name_suffix }}
         {{- if not (empty .Values.prompts.custom_txt) }}
         - name: prompts-volume-custom
           configMap:
