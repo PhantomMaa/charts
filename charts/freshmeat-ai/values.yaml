@@ -27,10 +27,13 @@ affinity: {}
 config:
   base:
     log_level: INFO
-    bargain:
-      base_temperature: 0.2
-      temperature_step: 0.15
-      max_temperature: 0.75
+    log_llm_response: true
+    consult_category: 
+      - 50023914 # 软件开发
+  bargain:
+    base_temperature: 0.2
+    temperature_step: 0.15
+    max_temperature: 0.75
   xianyu:
     cookies: ""
   openai:
@@ -59,6 +62,7 @@ prompts:
     - "common_pre_txt"
     - "bargain_txt"
     - "tech_txt"
+    - "consult_txt"
     - "general_txt"
     - "common_end_txt"
   # Prompt words customized for individuals

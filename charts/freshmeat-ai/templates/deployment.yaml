@@ -30,10 +30,12 @@ spec:
             - name: config-volume
               mountPath: /app/config.yaml
               subPath: config.yaml
+            {{- if not (empty .Values.prompts.files) }}
             {{- range $file := .Values.prompts.files }}
             - name: prompts-volume
               mountPath: /app/prompts/{{ $file }}
               subPath: {{ $file }}
+            {{- end }}
             {{- end }}
             {{- if not (empty .Values.prompts.custom_txt) }}
             - name: prompts-volume-custom
@@ -58,9 +60,11 @@ spec:
         - name: config-volume
           configMap:
             name: {{ include "freshmeat-ai.fullname" . }}-config
+        {{- if not (empty .Values.prompts.files) }}
         - name: prompts-volume
           configMap:
             name: {{ .Chart.Name }}-{{ .Values.prompts.configmap_name_suffix }}
+        {{- end }}
         {{- if not (empty .Values.prompts.custom_txt) }}
         - name: prompts-volume-custom
           configMap:
