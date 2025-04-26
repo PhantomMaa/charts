@@ -16,7 +16,6 @@ This repository contains a collection of well-maintained Helm Charts for quickly
 - **Includes**:
   - Grafana dashboards
   - Prometheus for metrics
-  - Loki for logs
   - Tempo for traces
   - Agent Operator for auto-collection
 

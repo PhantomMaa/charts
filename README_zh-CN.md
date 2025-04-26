@@ -13,7 +13,6 @@
 - **包含**:
   - Grafana 仪表盘
   - Prometheus Metrics
-  - Loki Log
 	- Tempo Trace
 	- agent operator 自动采集
 
