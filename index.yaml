@@ -48,6 +48,34 @@ entries:
   grafana-stack:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2025-04-26T13:49:20.893353623Z"
+    dependencies:
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 27.1.0
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 8.8.5
+    - condition: tempo.enabled
+      name: tempo
+      repository: https://grafana.github.io/helm-charts
+      version: 1.18.1
+    - alias: grafanaAgentOperator
+      condition: grafanaAgentOperator.enabled
+      name: grafana-agent-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.5.0
+    description: A Helm chart for Kubernetes
+    digest: b69d1e144b90d07c565c930cd71d31fcdc1e67f808743e4e9bca57b2f108810f
+    name: grafana-stack
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/grafana-stack-1.0.1/grafana-stack-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-02-13T07:49:41.776208685Z"
     dependencies:
     - condition: prometheus.enabled
@@ -307,4 +335,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-15T02:01:18.389275463Z"
+generated: "2025-04-26T13:49:20.893404038Z"
