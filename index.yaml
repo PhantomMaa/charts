@@ -222,6 +222,25 @@ entries:
     version: 1.0.0
   my-traefik:
   - apiVersion: v2
+    appVersion: 1.0.5
+    created: "2025-05-23T17:52:14.560024872Z"
+    dependencies:
+    - alias: certmanager
+      condition: config.https.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.17.2
+    - name: traefik
+      repository: https://traefik.github.io/charts
+      version: 35.4.0
+    description: A Helm chart for Kubernetes
+    digest: b7db55be635d2eb483ed34168b719706251e33d3d0eeb093d37ab65e680385ef
+    name: my-traefik
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/my-traefik-1.0.5/my-traefik-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
     appVersion: 1.0.4
     created: "2025-03-10T15:15:49.491982664Z"
     dependencies:
@@ -335,4 +354,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-26T13:49:20.893404038Z"
+generated: "2025-05-23T17:52:14.560051812Z"
