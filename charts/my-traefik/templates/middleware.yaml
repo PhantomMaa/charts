@@ -17,16 +17,6 @@ spec:
       - "*"
     accessControlMaxAge: 3600
 
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: custom-request-headers-to-https
-spec:
-  headers:
-    customRequestHeaders:
-      X-Forwarded-Proto: "https"
-
 {{- if eq .Values.config.auth.enabled true }}
 ---
 apiVersion: traefik.io/v1alpha1
