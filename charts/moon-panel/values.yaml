@@ -129,9 +129,9 @@ site:
   replicaCount: 1
 
   image:
-    repository: ghcr.io/phantommaa/moonbox-site
-    pullPolicy: Always
-    tag: latest
+    repository: ghcr.io/phantommaa/sun-panel/site
+    pullPolicy: IfNotPresent
+    tag: ""
 
   resources: 
     limits:
