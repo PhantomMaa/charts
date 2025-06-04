@@ -2,7 +2,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ingress-{{ include "moon-panel.fullname" . }}
+  name: ingress-{{ include "moon-box.fullname" . }}
 spec:
   entryPoints:
     - websecure
@@ -10,7 +10,7 @@ spec:
     - match: Host(`{{ .Values.frontend.ingress.hostname }}`)
       kind: Rule
       services:
-        - name: svc-{{ include "moon-panel.fullname" . }}-frontend
+        - name: svc-{{ include "moon-box.fullname" . }}-frontend
           port: {{ .Values.frontend.service.port }}
   tls:
     secretName: wildcard-tls-certificate

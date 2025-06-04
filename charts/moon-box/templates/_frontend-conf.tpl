@@ -1,4 +1,4 @@
-{{- define "moon-panel-frontend.conf" -}}
+{{- define "moon-box-frontend.conf" -}}
 # 定义缓存区域（用于静态文件）
 proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=static_cache:10m max_size=1g inactive=60m;
 
@@ -25,7 +25,7 @@ server {
 
     # API 请求转发到后端
     location /api/ {
-        proxy_pass http://svc-moon-panel-backend:3002;
+        proxy_pass http://svc-moon-box-backend:3002;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -35,7 +35,7 @@ server {
 
     # 静态文件请求，走缓存
     location /uploads/ {
-        proxy_pass http://svc-moon-panel-backend:3002/api/file/s3/;
+        proxy_pass http://svc-moon-box-backend:3002/api/file/s3/;
         proxy_cache static_cache;
         proxy_cache_valid 200 24h;
         proxy_cache_key "$scheme$request_method$host$request_uri";
@@ -50,7 +50,7 @@ server {
 
     # 额外配置静态站点
     location /site/ {
-        proxy_pass http://svc-moon-panel-site:3001/;
+        proxy_pass http://svc-moon-box-site:3001/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';

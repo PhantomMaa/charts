@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "moon-panel.fullname" . }}-backend
+  name: {{ include "moon-box.fullname" . }}-backend
   labels:
-    {{- include "moon-panel.labels-backend" . | nindent 4 }}
+    {{- include "moon-box.labels-backend" . | nindent 4 }}
 spec:
   replicas: {{ .Values.backend.replicaCount }}
   selector:
     matchLabels:
-      {{- include "moon-panel.selectorLabels-backend" . | nindent 6 }}
+      {{- include "moon-box.selectorLabels-backend" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "moon-panel.labels-backend" . | nindent 8 }}
+        {{- include "moon-box.labels-backend" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}-backend
@@ -32,13 +32,13 @@ spec:
                 fieldRef:
                   fieldPath: status.hostIP
           volumeMounts:
-            - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
+            - name: volumn-{{ include "moon-box.fullname" . }}-backend-conf
               mountPath: /app/conf.yaml
               subPath: conf.yaml
       volumes:
-        - name: volumn-{{ include "moon-panel.fullname" . }}-backend-conf
+        - name: volumn-{{ include "moon-box.fullname" . }}-backend-conf
           configMap:
-            name: {{ include "moon-panel.fullname" . }}-backend-conf
+            name: {{ include "moon-box.fullname" . }}-backend-conf
       {{- with .Values.backend.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
@@ -52,18 +52,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "moon-panel.fullname" . }}-frontend
+  name: {{ include "moon-box.fullname" . }}-frontend
   labels:
-    {{- include "moon-panel.labels-frontend" . | nindent 4 }}
+    {{- include "moon-box.labels-frontend" . | nindent 4 }}
 spec:
   replicas: {{ .Values.frontend.replicaCount }}
   selector:
     matchLabels:
-      {{- include "moon-panel.selectorLabels-frontend" . | nindent 6 }}
+      {{- include "moon-box.selectorLabels-frontend" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "moon-panel.labels-frontend" . | nindent 8 }}
+        {{- include "moon-box.labels-frontend" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}-frontend
@@ -78,13 +78,13 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: volumn-{{ include "moon-panel.fullname" . }}-frontend-conf
+            - name: volumn-{{ include "moon-box.fullname" . }}-frontend-conf
               mountPath: /etc/nginx/conf.d/default.conf
               subPath: default.conf
       volumes:
-        - name: volumn-{{ include "moon-panel.fullname" . }}-frontend-conf
+        - name: volumn-{{ include "moon-box.fullname" . }}-frontend-conf
           configMap:
-            name: {{ include "moon-panel.fullname" . }}-frontend-conf
+            name: {{ include "moon-box.fullname" . }}-frontend-conf
       {{- with .Values.frontend.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
@@ -98,18 +98,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "moon-panel.fullname" . }}-site
+  name: {{ include "moon-box.fullname" . }}-site
   labels:
-    {{- include "moon-panel.labels-site" . | nindent 4 }}
+    {{- include "moon-box.labels-site" . | nindent 4 }}
 spec:
   replicas: {{ .Values.site.replicaCount }}
   selector:
     matchLabels:
-      {{- include "moon-panel.selectorLabels-site" . | nindent 6 }}
+      {{- include "moon-box.selectorLabels-site" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "moon-panel.labels-site" . | nindent 8 }}
+        {{- include "moon-box.labels-site" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}-site
