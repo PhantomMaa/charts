@@ -139,6 +139,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/memos-1.0.0/memos-1.0.0.tgz
     version: 1.0.0
+  moon-box:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2025-06-04T02:00:21.412930389Z"
+    description: A Helm chart for Kubernetes
+    digest: c3418163be57922545f3f443ccd57bc90850d1de3365d3036f5c5b302a051635
+    name: moon-box
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/moon-box-1.0.1/moon-box-1.0.1.tgz
+    version: 1.0.1
   moon-panel:
   - apiVersion: v2
     appVersion: v1.3.4-beta-20
@@ -364,4 +375,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-06-03T16:04:06.139074425Z"
+generated: "2025-06-04T02:00:21.412971426Z"
