@@ -1,4 +1,6 @@
 traefik:
+  image:
+    tag: v3.4.3
   providers:
     kubernetesCRD:
       enabled: true
