@@ -10,13 +10,14 @@ traefik:
         - infra
 
 certmanager:
+  enabled: false
   fullnameOverride: my-certmanager
 
 config:
   domain: xxx.com
-  https: 
-    enabled: true
-    cloudflareApiToken: XXX
+  https:
+    enabled: false
+    cloudflareApiToken: xxx
     email: xxx@xxx.com
   auth: 
     enabled: true
