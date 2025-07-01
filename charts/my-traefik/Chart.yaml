@@ -12,8 +12,8 @@ dependencies:
     repository: https://charts.jetstack.io
     # save the crds/cert-manager.crds.yaml at the same time
     # https://github.com/cert-manager/cert-manager/releases/download/v1.17.2/cert-manager.crds.yaml
-    version: v1.17.2
+    version: v1.18.1
     condition: config.https.enabled
   - name: traefik
     repository: https://traefik.github.io/charts
-    version: 35.4.0
+    version: 36.2.0
