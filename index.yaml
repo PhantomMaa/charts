@@ -45,6 +45,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/freshmeat-ai-1.0.1/freshmeat-ai-1.0.1.tgz
     version: 1.0.1
+  gemini-balance:
+  - apiVersion: v2
+    appVersion: 2.1.7
+    created: "2025-07-07T04:31:37.992241221Z"
+    description: A Helm chart for Kubernetes
+    digest: a14dbe98482b69ad64a56c6fdaee68e9020203cb386d3a3e25144f8206e672f7
+    name: gemini-balance
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/gemini-balance-0.1.0/gemini-balance-0.1.0.tgz
+    version: 0.1.0
   grafana-stack:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -432,4 +443,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-07-01T15:59:39.187531465Z"
+generated: "2025-07-07T04:31:37.992318116Z"
