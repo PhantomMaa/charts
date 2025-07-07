@@ -1,0 +1,31 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/snailyp/gemini-balance
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 28000
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+env:
+  DATABASE_TYPE: mysql
+  MYSQL_HOST: xxx
+  MYSQL_PORT: 3306
+  MYSQL_USER: root
+  MYSQL_PASSWORD: xxx
+  MYSQL_DATABASE: moonbox
+  API_KEYS: '["key1", "key2"]'
+  ALLOWED_TOKENS: '["token1"]'
