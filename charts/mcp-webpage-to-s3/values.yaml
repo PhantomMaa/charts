@@ -1,0 +1,41 @@
+replicaCount: 1
+
+image:
+  repository: xxx
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 18001
+
+ingress:
+  enabled: false
+  hostname: mcp-webpage-to-s3.example.com
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+config:
+  mcp_server:
+    port: 8001
+    transport: streamable-http
+    # transport: stdio
+    # transport: sse
+  s3: # aws
+    access_key: AK
+    secret_key: SK
+    bucket: your-bucket-name
+    endpoint: https://s3.ap-southeast-1.amazonaws.com
+    base_url: https://your-bucket-name.s3.ap-southeast-1.amazonaws.com
+    region: ap-southeast-1
+
+  log_level: INFO

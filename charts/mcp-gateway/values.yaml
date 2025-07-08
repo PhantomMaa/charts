@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/ibm/mcp-context-forge
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 14444
+
+ingress:
+  enabled: false
+  hostname: mcp-gateway.example.com
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+env:
+  HOST: 0.0.0.0
+  PORT: 4444
+  DB_TYPE: postgresdb
+  JWT_SECRET_KEY: my-test-key
+  BASIC_AUTH_USER: admin
+  BASIC_AUTH_PASSWORD: changeme
+  AUTH_REQUIRED: true
+  DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-mysecretpassword}@postgres:5432/mcp

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "mcp-webpage-to-s3.fullname" . }}
+  labels:
+    {{- include "mcp-webpage-to-s3.labels" . | nindent 4 }}
+data:
+  config.yaml: |-
+    {{- .Values.config | toYaml | nindent 4 }}

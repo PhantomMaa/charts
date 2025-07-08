@@ -1,0 +1,17 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-{{ include "mcp-webpage-to-s3.fullname" . }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`{{ .Values.ingress.hostname }}`)
+      kind: Rule
+      services:
+        - name: {{ include "mcp-webpage-to-s3.fullname" . }}
+          port: {{ .Values.service.port }}
+  tls:
+    secretName: wildcard-tls-certificate
+{{- end }}
