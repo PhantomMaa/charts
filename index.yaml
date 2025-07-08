@@ -139,6 +139,28 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/maybe-1.0.0/maybe-1.0.0.tgz
     version: 1.0.0
+  mcp-gateway:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2025-07-08T07:18:17.765072707Z"
+    description: A Helm chart for Kubernetes
+    digest: 7249b7718616c71fedc1ca54726822267f690f66d0971248bd15566a7ac9bee8
+    name: mcp-gateway
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/mcp-gateway-0.1.0/mcp-gateway-0.1.0.tgz
+    version: 0.1.0
+  mcp-webpage-to-s3:
+  - apiVersion: v2
+    appVersion: v1.0.3
+    created: "2025-07-08T07:18:17.861697648Z"
+    description: A Helm chart for Kubernetes
+    digest: f3cb7a929c5fc62cd96919b8b0f8789288517e8cba78dcb0a702079fa56577ca
+    name: mcp-webpage-to-s3
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/mcp-webpage-to-s3-0.1.0/mcp-webpage-to-s3-0.1.0.tgz
+    version: 0.1.0
   memos:
   - apiVersion: v2
     appVersion: stable
@@ -443,4 +465,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-07-07T04:31:37.992318116Z"
+generated: "2025-07-08T07:18:17.861775674Z"
