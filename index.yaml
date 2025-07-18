@@ -142,6 +142,16 @@ entries:
   mcp-gateway:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2025-07-18T09:05:18.774723772Z"
+    description: A Helm chart for Kubernetes
+    digest: 883dcfe0a0d6b5fe067261982adad91f57f0b6cf34ee9e338d4eea9b048d4bd0
+    name: mcp-gateway
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/mcp-gateway-0.1.1/mcp-gateway-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2025-07-08T07:18:17.765072707Z"
     description: A Helm chart for Kubernetes
     digest: 7249b7718616c71fedc1ca54726822267f690f66d0971248bd15566a7ac9bee8
@@ -465,4 +475,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-07-08T07:18:17.861775674Z"
+generated: "2025-07-18T09:05:18.774783204Z"
