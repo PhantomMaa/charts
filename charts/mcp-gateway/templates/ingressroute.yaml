@@ -4,14 +4,20 @@ kind: IngressRoute
 metadata:
   name: ingress-{{ include "mcp-gateway.fullname" . }}
 spec:
-  # entryPoints:
-  #   - websecure
+  entryPoints:
+  {{- if .Values.ingress.https }}
+    - websecure
+  {{- else }}
+    - web
+  {{- end }}
   routes:
     - match: Host(`{{ .Values.ingress.hostname }}`)
       kind: Rule
       services:
         - name: {{ include "mcp-gateway.fullname" . }}
           port: {{ .Values.service.port }}
-  # tls:
-  #   secretName: wildcard-tls-certificate
+  {{- if .Values.ingress.https }}
+  tls:
+    secretName: wildcard-tls-certificate
+  {{- end }}
 {{- end }}
