@@ -23,7 +23,10 @@ resources: {}
 database:
   connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
 
-ingressHostname: ""
+ingress:
+  enabled: false
+  https: false
+  hostname: prefect.example.com
 
 nodeSelector: {}
 
