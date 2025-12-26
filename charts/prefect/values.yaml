@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: prefecthq/prefect
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 14200
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+database:
+  connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
+
+ingressHostname: xxx.example.com
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
