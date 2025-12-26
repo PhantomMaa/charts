@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "prefect.fullname" . }}
+  name: {{ include "prefect.fullname" . }}-server
   labels:
-    {{- include "prefect.labels" . | nindent 4 }}
+    {{- include "prefect.labels" . | nindent 4 }}-server
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.server.replicaCount }}
   selector:
     matchLabels:
-      {{- include "prefect.selectorLabels" . | nindent 6 }}
+      {{- include "prefect.selectorLabels" . | nindent 6 }}-server
   template:
     metadata:
       labels:
-        {{- include "prefect.labels" . | nindent 8 }}
+        {{- include "prefect.labels" . | nindent 8 }}-server
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: server
           image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.server.image.pullPolicy }}
           command: ["prefect", "server", "start"]
@@ -30,7 +30,26 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
-        - name: {{ .Chart.Name }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prefect.fullname" . }}-worker
+  labels:
+    {{- include "prefect.labels" . | nindent 4 }}-worker
+spec:
+  replicas: {{ .Values.worker.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "prefect.selectorLabels" . | nindent 6 }}-worker
+  template:
+    metadata:
+      labels:
+        {{- include "prefect.labels" . | nindent 8 }}-worker
+    spec:
+      containers:
+        - name: worker
           image: "{{ .Values.worker.image.repository }}:{{ .Values.worker.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.worker.image.pullPolicy }}
           command: ["prefect", "worker", "start", "--pool", "{{ .Values.worker.pool_name }}"]

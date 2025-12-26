@@ -1,5 +1,3 @@
-replicaCount: 1
-
 nameOverride: ""
 fullnameOverride: ""
 
@@ -8,6 +6,8 @@ service:
   port: 34200
 
 server:
+  replicaCount: 1
+
   image:
     repository: prefecthq/prefect
     pullPolicy: IfNotPresent
@@ -34,6 +34,8 @@ server:
     hostname: prefect.example.com
 
 worker:
+  replicaCount: 1
+
   image:
     repository: prefecthq/prefect
     pullPolicy: IfNotPresent
