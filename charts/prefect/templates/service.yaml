@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: {{ include "prefect.fullname" . }}-server
   labels:
-    {{- include "prefect.labels" . | nindent 4 }}-server
+    {{- include "prefect.labels" . | nindent 4 }}
+    app.kubernetes.io/component: server
 spec:
   type: {{ .Values.server.service.type }}
   ports:
@@ -12,4 +13,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "prefect.selectorLabels" . | nindent 4 }}-server
+    {{- include "prefect.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: server
