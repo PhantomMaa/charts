@@ -1,10 +1,6 @@
 nameOverride: ""
 fullnameOverride: ""
 
-service:
-  type: ClusterIP
-  port: 34200
-
 server:
   replicaCount: 1
 
@@ -25,6 +21,10 @@ server:
     PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
     PREFECT_SERVER_API_HOST: 0.0.0.0
 
+  service:
+    type: ClusterIP
+    port: 34200
+ 
   database:
     connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
 
