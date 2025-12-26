@@ -10,7 +10,7 @@ fullnameOverride: ""
 
 service:
   type: ClusterIP
-  port: 14200
+  port: 34200
 
 resources: {}
   # limits:

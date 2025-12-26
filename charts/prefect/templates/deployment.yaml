@@ -21,7 +21,7 @@ spec:
           command: ["prefect", "server", "start"]
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 4200
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
