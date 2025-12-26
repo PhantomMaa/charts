@@ -23,7 +23,7 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           resources:
-            {{- toYaml . | nindent 12 }}
+            {{- toYaml .Values.resources | nindent 12 }}
           env:
             {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
