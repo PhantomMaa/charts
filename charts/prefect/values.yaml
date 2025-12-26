@@ -1,10 +1,5 @@
 replicaCount: 1
 
-image:
-  repository: prefecthq/prefect
-  pullPolicy: IfNotPresent
-  tag: ""
-
 nameOverride: ""
 fullnameOverride: ""
 
@@ -12,28 +7,48 @@ service:
   type: ClusterIP
   port: 34200
 
-resources: {}
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+server:
+  image:
+    repository: prefecthq/prefect
+    pullPolicy: IfNotPresent
+    tag: ""
 
-env:
-  PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
-  PREFECT_SERVER_API_HOST: 0.0.0.0
+  resources: {}
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
 
-database:
-  connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
+  env:
+    PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
+    PREFECT_SERVER_API_HOST: 0.0.0.0
 
-ingress:
-  enabled: false
-  https: false
-  hostname: prefect.example.com
+  database:
+    connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
 
-nodeSelector: {}
+  ingress:
+    enabled: false
+    https: false
+    hostname: prefect.example.com
 
-tolerations: []
+worker:
+  image:
+    repository: prefecthq/prefect
+    pullPolicy: IfNotPresent
+    tag: ""
 
-affinity: {}
+  pool_name: default-pool
+
+  resources: {}
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  env:
+    PREFECT_API_URL: https://prefect.example.com/api
+    PREFECT_API_AUTH_STRING: admin:pass
