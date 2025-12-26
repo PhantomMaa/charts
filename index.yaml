@@ -421,6 +421,16 @@ entries:
   prefect:
   - apiVersion: v2
     appVersion: 3.6.8
+    created: "2025-12-26T13:23:11.3446979Z"
+    description: A Helm chart for Kubernetes
+    digest: 044c237fb2e8b8cbe3be0a5e109490a5e7e5b8a0b08c5b7ce4bb3e8d746b3749
+    name: prefect
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/prefect-0.1.7/prefect-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 3.6.8
     created: "2025-12-26T13:13:05.563856206Z"
     description: A Helm chart for Kubernetes
     digest: 34c937369e9c43e189300094afd90b477b5456fdb4ec1276e5fe03b808e2e8b6
@@ -565,4 +575,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-12-26T13:13:05.563937337Z"
+generated: "2025-12-26T13:23:11.344791646Z"
