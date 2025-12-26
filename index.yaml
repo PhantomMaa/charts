@@ -418,6 +418,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/my-traefik-1.0.3/my-traefik-1.0.3.tgz
     version: 1.0.3
+  prefect:
+  - apiVersion: v2
+    appVersion: 3.6.8
+    created: "2025-12-26T08:37:35.378105344Z"
+    description: A Helm chart for Kubernetes
+    digest: 3a8b1e31c320c332f799a174c4ea473d594e97946c244a8341abb7654c9b123d
+    name: prefect
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/prefect-0.1.0/prefect-0.1.0.tgz
+    version: 0.1.0
   umami:
   - apiVersion: v2
     appVersion: mysql-v2.15.1
@@ -494,4 +505,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-08-11T13:44:44.207320646Z"
+generated: "2025-12-26T08:37:35.378165817Z"
