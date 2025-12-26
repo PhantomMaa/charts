@@ -20,6 +20,10 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+env:
+  PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
+  PREFECT_SERVER_API_HOST: 0.0.0.0
+
 database:
   connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
 
