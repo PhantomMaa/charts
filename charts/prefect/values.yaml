@@ -7,7 +7,7 @@ server:
   image:
     repository: prefecthq/prefect
     pullPolicy: IfNotPresent
-    tag: ""
+    tag: 3.6.8-python3.12
 
   resources: {}
     # limits:
@@ -37,11 +37,9 @@ worker:
   replicaCount: 1
 
   image:
-    repository: prefecthq/prefect
+    repository: hub.byted.org/faas/prefect-dts
     pullPolicy: IfNotPresent
-    tag: ""
-
-  pool_name: default-pool
+    tag: 1.0.0.4
 
   resources: {}
     # limits:
@@ -54,3 +52,6 @@ worker:
   env:
     PREFECT_API_URL: https://prefect.example.com/api
     PREFECT_API_AUTH_STRING: admin:pass
+
+  config:
+    pool_name: default-pool

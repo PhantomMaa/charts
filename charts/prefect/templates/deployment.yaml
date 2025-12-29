@@ -56,7 +56,13 @@ spec:
         - name: worker
           image: "{{ .Values.worker.image.repository }}:{{ .Values.worker.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.worker.image.pullPolicy }}
-          command: ["prefect", "worker", "start", "--pool", "{{ .Values.worker.pool_name }}"]
+          command:
+            - prefect
+            - worker
+            - start
+          args:
+            - --pool
+            - {{ .Values.worker.config.pool_name | quote }}
           resources:
             {{- toYaml .Values.worker.resources | nindent 12 }}
           env:
