@@ -2,6 +2,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 server:
+  enabled: true
+
   replicaCount: 1
 
   image:
@@ -34,6 +36,8 @@ server:
     hostname: prefect.example.com
 
 worker:
+  enabled: true
+  
   replicaCount: 1
 
   image:

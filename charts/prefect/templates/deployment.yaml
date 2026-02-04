@@ -1,3 +1,4 @@
+{{- if .Values.server.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,7 +33,9 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+{{- end }}
 
+{{- if .Values.worker.enabled }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -63,6 +66,11 @@ spec:
           args:
             - --pool
             - {{ .Values.worker.config.pool_name | quote }}
+            - --with-healthcheck
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
           resources:
             {{- toYaml .Values.worker.resources | nindent 12 }}
           env:
@@ -70,3 +78,4 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+{{- end }}

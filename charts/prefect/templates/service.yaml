@@ -1,3 +1,4 @@
+{{- if .Values.server.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -15,3 +16,4 @@ spec:
   selector:
     {{- include "prefect.selectorLabels" . | nindent 4 }}
     app.kubernetes.io/component: server
+{{- end }}
