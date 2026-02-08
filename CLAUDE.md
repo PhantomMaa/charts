@@ -11,7 +11,7 @@
 - **blinko**: 轻量级自托管文档系统 (v1.0.1)
 - **grafana-stack**: 包含 Grafana、Prometheus、Tempo 和 Agent Operator 的综合监控解决方案 (v1.0.1)
 - **keycloak**: 企业级身份和访问管理，使用 StatefulSet 部署
-- **my-traefik**: 集成 cert-manager 和 Cloudflare DNS 的生产级反向代理 (v1.0.9)
+- **my-traefik**: 生产级反向代理,支持 HTTPS 和 Cloudflare DNS (v1.0.9)
 - **umami**: 现代网站分析平台
 - **memos**: 笔记应用程序
 - **maybe**: 预算跟踪应用程序
@@ -39,16 +39,18 @@ charts/<chart-name>/
 
 1. **Traefik 集成**: 大多数 charts 使用 Traefik IngressRoute 而非标准 Ingress
 2. **模板助手**: 用于命名、标签和选择器的标准 Helm 助手函数
-3. **Chart 依赖**: 复杂的 charts 如 `my-traefik` 和 `grafana-stack` 使用子 chart 依赖
+3. **Chart 依赖**: 复杂的 charts 如 `grafana-stack` 使用子 chart 依赖
 4. **资源管理**: 所有 charts 都包含资源请求/限制配置
 
 ### 重要 Chart 详情
 
-**my-traefik**: 
-- 结合 Traefik v3.5.0 和 cert-manager v1.18.2
-- 通过 Cloudflare DNS 质询支持通配符域名
+**my-traefik**:
+- 基于 Traefik v3.5.0 的反向代理
+- 当启用 HTTPS 时,会创建 cert-manager 相关资源(Certificate、Issuer 等)
+- 通过 Cloudflare DNS 质询支持通配符域名证书
 - 包含基本认证中间件配置
 - 默认启用跨命名空间 ingress 支持
+- 注意: 需要在集群中预先安装 cert-manager
 
 **grafana-stack**:
 - 捆绑 Prometheus (v27.1.0)、Grafana (v8.8.5)、Tempo 和 Grafana Agent Operator

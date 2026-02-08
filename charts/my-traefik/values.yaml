@@ -1,6 +1,6 @@
 traefik:
   image:
-    tag: v3.5.0
+    tag: v3.6.7
   providers:
     kubernetesCRD:
       enabled: true
@@ -9,14 +9,11 @@ traefik:
         - default
         - infra
 
-certmanager:
-  enabled: false
-  fullnameOverride: my-certmanager
-
 config:
   domain: xxx.com
   https:
     enabled: false
+    choseClusterIssuer: acme # acme or self-signed
     cloudflareApiToken: xxx
     email: xxx@xxx.com
   auth: 

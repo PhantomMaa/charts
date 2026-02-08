@@ -1,18 +1,17 @@
 # My Traefik
 
 [![Helm Version](https://img.shields.io/badge/Helm-v3-blue)](https://helm.sh)
-[![Traefik Version](https://img.shields.io/badge/Traefik-v2.10-blue)](https://traefik.io)
-[![Cert Manager Version](https://img.shields.io/badge/Cert_Manager-v1.16-blue)](https://cert-manager.io)
+[![Traefik Version](https://img.shields.io/badge/Traefik-v3.5-blue)](https://traefik.io)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-A Helm chart that combines Traefik and cert-manager for easy deployment of Traefik with automatic HTTPS certificate management.
+A Helm chart for deploying Traefik with automatic HTTPS certificate management using cert-manager integration.
 
 ## Features
 
 - One-click deployment of Traefik as an ingress controller
-- Automatic HTTPS certificate management with cert-manager
-- Support wildcard domain names
-- Built-in Cloudflare DNS integration
+- Automatic HTTPS certificate management (requires cert-manager to be installed)
+- Support for wildcard domain certificates
+- Cloudflare DNS challenge integration
 - Optional basic authentication support
 - Cross-namespace support for ingress resources
 
@@ -20,18 +19,24 @@ A Helm chart that combines Traefik and cert-manager for easy deployment of Traef
 
 - Kubernetes cluster
 - Helm v3+
-- A domain name with Cloudflare DNS management
-- Cloudflare API token with DNS management permissions
+- cert-manager installed in the cluster (required for HTTPS support)
+- A domain name with Cloudflare DNS management (for HTTPS)
+- Cloudflare API token with DNS management permissions (for HTTPS)
 
 ## Installation
 
-1. Add the Helm repository:
+1. Install cert-manager (if not already installed):
 ```bash
-helm repo add phantom-chart "https://g-lelp9461-helm.pkg.coding.net/default/phantom-chart"
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.yaml
+```
+
+2. Add the Helm repository:
+```bash
+helm repo add phantom-chart "https://phantommaa.github.io/charts"
 helm repo update
 ```
 
-2. Create a values.yaml file with your configuration:
+3. Create a values.yaml file with your configuration:
 ```yaml
 config:
   domain: your-domain.com
@@ -52,7 +57,7 @@ traefik:
         - your-namespace
 ```
 
-3. Install the chart:
+4. Install the chart:
 ```bash
 helm install my-traefik my-traefik/my-traefik -f values.yaml
 ```
@@ -78,13 +83,15 @@ helm install my-traefik my-traefik/my-traefik -f values.yaml
 
 ## Components
 
-This Helm chart includes the following components:
-- Traefik (v2.x) - Modern reverse proxy and load balancer
-- cert-manager - Kubernetes certificate management controller
+This Helm chart deploys:
+- Traefik (v3.5.0) - Modern reverse proxy and load balancer
+- cert-manager resources (Certificate, Issuer, etc.) - when HTTPS is enabled
 
 ## Architecture
 
-The chart sets up Traefik as an ingress controller and configures cert-manager to automatically manage HTTPS certificates using Let's Encrypt with Cloudflare DNS challenge.
+The chart sets up Traefik as an ingress controller. When HTTPS is enabled, it creates cert-manager resources (ClusterIssuer, Certificate) to automatically manage HTTPS certificates using Let's Encrypt with Cloudflare DNS challenge.
+
+**Note:** cert-manager must be installed separately in your cluster before enabling HTTPS in this chart.
 
 ## Contributing
 
