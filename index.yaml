@@ -286,6 +286,20 @@ entries:
     version: 1.0.0
   my-traefik:
   - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2026-02-08T16:50:17.600974106Z"
+    dependencies:
+    - name: traefik
+      repository: https://traefik.github.io/charts
+      version: 39.0.0
+    description: A Helm chart for Kubernetes
+    digest: 85517301c686d1053eaf82cfbc9a6489ca2feebaea6dc3ee8f3b768c0f4091e3
+    name: my-traefik
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/my-traefik-1.1.0/my-traefik-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 1.0.9
     created: "2025-08-11T13:44:44.207282154Z"
     dependencies:
@@ -575,4 +589,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2025-12-26T13:23:11.344791646Z"
+generated: "2026-02-08T16:50:17.766070985Z"
