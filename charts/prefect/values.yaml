@@ -59,3 +59,24 @@ worker:
 
   config:
     pool_name: default-pool
+    sites:
+      - name: boe
+        endpoint: https://boe.xxx.net
+        svc_account: xxx
+        svc_secret: xxx
+      
+    database:
+      host: 127.0.0.1
+      port: 3306
+      username: root
+      password: xxx
+      db_name: your_db
+
+    feishu:
+      enable_bot_chat: true
+      bot_app_id: cli_xxx
+      bot_app_secret: xxxx
+
+    bytecloud_oauth:
+      client_id: cli_xxx
+      client_secret: xxxx

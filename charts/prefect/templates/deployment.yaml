@@ -54,6 +54,8 @@ spec:
       labels:
         {{- include "prefect.labels" . | nindent 8 }}
         app.kubernetes.io/component: worker
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") $ | sha256sum }}
     spec:
       containers:
         - name: worker
@@ -78,4 +80,12 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.yaml
+              subPath: config.yaml
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "bytedts-dancer.fullname" . }}
 {{- end }}
