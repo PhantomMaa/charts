@@ -69,14 +69,15 @@ helm install my-traefik my-traefik/my-traefik -f values.yaml
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | `config.domain` | Your domain name | `nil` |
-| `config.https.enabled` | Enable HTTPS with cert-manager | `true` |
-| `config.https.cloudflareApiToken` | Cloudflare API token for DNS challenge | `nil` |
-| `config.https.email` | Email for Let's Encrypt registration | `nil` |
+| `certmanager.enabled` | Enable HTTPS with cert-manager | `true` |
+| `certmanager.cloudflareApiToken` | Cloudflare API token for DNS challenge | `nil` |
+| `certmanager.email` | Email for Let's Encrypt registration | `nil` |
 
 ### Optional Values
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
+| `config.https.enabled` | Enable https support | `false` |
 | `config.auth.enabled` | Enable basic authentication | `false` |
 | `traefik.providers.kubernetesCRD.allowCrossNamespace` | Allow cross-namespace ingress | `true` |
 | `traefik.providers.kubernetesCRD.namespaces` | List of namespaces to watch | `["default"]` |

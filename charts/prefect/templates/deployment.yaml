@@ -87,5 +87,5 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: {{ include "bytedts-dancer.fullname" . }}
+            name: {{ include "prefect.fullname" . }}-worker
 {{- end }}

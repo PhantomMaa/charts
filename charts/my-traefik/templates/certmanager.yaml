@@ -1,23 +1,23 @@
-{{- if eq .Values.config.https.enabled true }}
-{{- if eq .Values.config.https.choseClusterIssuer "acme" }}
+{{- if eq .Values.certmanager.enabled true }}
+{{- if eq .Values.certmanager.choseClusterIssuer "acme" }}
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: cert-cluster-issuer
 spec:
   acme:
-    email: {{ .Values.config.https.email }}
+    email: {{ .Values.certmanager.email }}
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cert-cluster-issuer
     solvers:
       - dns01:
           cloudflare:
-            email: {{ .Values.config.https.email }}
+            email: {{ .Values.certmanager.email }}
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
-{{- else if eq .Values.config.https.choseClusterIssuer "selfSigned" }}
+{{- else if eq .Values.certmanager.choseClusterIssuer "selfSigned" }}
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
