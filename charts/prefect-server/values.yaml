@@ -1,0 +1,32 @@
+nameOverride: ""
+fullnameOverride: ""
+replicaCount: 1
+
+image:
+  repository: prefecthq/prefect
+  pullPolicy: IfNotPresent
+  tag: 3.6.8-python3.12
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+env:
+  PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
+  PREFECT_SERVER_API_HOST: 0.0.0.0
+
+service:
+  type: ClusterIP
+  port: 34200
+
+database:
+  connectionUrl: postgresql+asyncpg://prefect:prefect@postgres:5432/prefect
+
+ingress:
+  enabled: false
+  https: false
+  hostname: prefect.example.com

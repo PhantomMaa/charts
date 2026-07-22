@@ -55,7 +55,7 @@ worker:
 
   nodeSelector: {}
 
-  tolerations: {}
+  tolerations: []
 
   affinity: {}
 
