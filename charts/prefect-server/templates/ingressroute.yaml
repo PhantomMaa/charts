@@ -1,22 +1,22 @@
-{{- if .Values.server.ingress.enabled }}
+{{- if .Values.ingress.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: ingress-{{ include "prefect-server.fullname" . }}-server
 spec:
   entryPoints:
-  {{- if .Values.server.ingress.https }}
+  {{- if .Values.ingress.https }}
     - websecure
   {{- else }}
     - web
   {{- end }}
   routes:
-    - match: Host(`{{ .Values.server.ingress.hostname }}`)
+    - match: Host(`{{ .Values.ingress.hostname }}`)
       kind: Rule
       services:
         - name: {{ include "prefect-server.fullname" . }}-server
-          port: {{ .Values.server.service.port }}
-  {{- if .Values.server.ingress.https }}
+          port: {{ .Values.service.port }}
+  {{- if .Values.ingress.https }}
   tls:
     secretName: wildcard-tls-certificate
   {{- end }}
