@@ -527,6 +527,17 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/prefect-0.1.0/prefect-0.1.0.tgz
     version: 0.1.0
+  prefect-server:
+  - apiVersion: v2
+    appVersion: 3.6.8
+    created: "2026-07-22T16:44:12.667197009Z"
+    description: A Helm chart for Kubernetes
+    digest: 9c2dc797b329b9ccaf9c81d56df7b087bb3706a4eb73902bc1197e86ad5762eb
+    name: prefect-server
+    type: application
+    urls:
+    - https://github.com/PhantomMaa/charts/releases/download/prefect-server-0.1.7/prefect-server-0.1.7.tgz
+    version: 0.1.7
   umami:
   - apiVersion: v2
     appVersion: mysql-v2.15.1
@@ -603,4 +614,4 @@ entries:
     urls:
     - https://github.com/PhantomMaa/charts/releases/download/xianyu-agent-0.1.1/xianyu-agent-0.1.1.tgz
     version: 0.1.1
-generated: "2026-06-26T12:17:14.200732365Z"
+generated: "2026-07-22T16:44:12.667263827Z"
