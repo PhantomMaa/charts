@@ -53,6 +53,12 @@ worker:
     #   cpu: 100m
     #   memory: 128Mi
 
+  nodeSelector: {}
+
+  tolerations: {}
+
+  affinity: {}
+
   env:
     PREFECT_API_URL: https://prefect.example.com/api
     PREFECT_API_AUTH_STRING: admin:pass
